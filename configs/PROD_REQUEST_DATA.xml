@@ -51,7 +51,7 @@
                 </serviceData>
             </services>
             <!--==========================================================================-->
-            <services>
+            <!-- <services>
                 <serviceCode>AUTO_WECASH_4</serviceCode>
                 <serviceData>
                     <key>Mobil</key>
@@ -61,7 +61,7 @@
                     <key>Email</key>
                     <stringValue>1597259783@qq.com</stringValue>
                 </serviceData>
-            </services>
+            </services> -->
             <!--==========================================================================-->
             <services>
                 <serviceCode>AUTO_ESHOP_5</serviceCode>

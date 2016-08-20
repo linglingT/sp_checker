@@ -215,18 +215,6 @@ a3_NCIICHKADDR
 a3_NCIICMATCH
 a3_NCIICVTIME
 
-WECASH
-a4_StartTime
-a4_Area
-a4_Count
-a4_OnlineTime
-a4_monthConsumptionLevel
-a4_UserHobby
-a4_ConsumptionLevel
-a4_SiteCategory
-a4_EndTime
-a4_UsageFrequency
-
 ESHOP
 a5_IP
 a5_Network_vendor

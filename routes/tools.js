@@ -5,11 +5,40 @@ var express = require('express'),
     path = require('path'),
     fs = require("fs"),
     pathUtils = require("../utils/PathUtils")
+    Compare = require("../utils/compare")
+    ;
 
 
 
 router.get("/tools", function(req,res,next){
-    res.redirect("/tools/viewSender");
+    res.redirect("/tools/viewSender",  { title: 'Super Proxy Tools'});
+});
+
+router.get("/tools/viewDiffCompare", function(req,res,next){
+    var _configPath = pathUtils.getConfigsPath(),
+        _prodSoapDataPath = path.join(_configPath,"PROD_REQUEST_DATA.xml"),_prodSoapDataFile;
+    _prodSoapDataFile = fs.readFileSync(_prodSoapDataPath, "utf8");
+    res.render('diffCompare',  { title: 'Super Proxy Result Compare' , soapData:_prodSoapDataFile.toString() });
+});
+
+router.post("/tools/diffCompare", function (req, res, next) {
+    var referenceResult, compareResult;
+    superSoap.request(req.body.referenceWsdlUrl, req.body.soapData, null,
+        function (data) {
+            referenceResult = data || "";
+            superSoap.request(req.body.compareWsdlUrl, req.body.soapData, null,
+                function (data) {
+                    compareResult = data || "";
+                    var compare = new Compare();
+                    if("" === referenceResult || "" === compareResult){
+                        res.end("ERROR");
+                    }else{
+                        compare.compareSuperProxy(referenceResult, compareResult, function(report){
+                            res.end(report);
+                        });
+                    }
+                });
+        });
 });
 
 router.get("/tools/viewSender", function(req,res,next){
@@ -26,8 +55,7 @@ router.post("/tools/requestPost",function(req,res,next){
 router.get("/tools/viewMissingCheck",function(req, res, next){
     var _configPath = pathUtils.getConfigsPath(),
         _prodSoapDataPath = path.join(_configPath,"PROD_REQUEST_DATA.xml"),_prodSoapDataFile;
-        _prodSoapDataFile = fs.readFileSync(_prodSoapDataPath, "utf8");
-    //console.log(_prodSoapDataFile)
+    _prodSoapDataFile = fs.readFileSync(_prodSoapDataPath, "utf8");
     res.render('missingCheck',  { title: 'Super Proxy Key Messing Check' , soapData:_prodSoapDataFile.toString() });
 });
 
@@ -67,5 +95,7 @@ router.post("/tools/missingCheck", function(req, res, next){
         });
 
 });
+
+
 
 module.exports = router;
