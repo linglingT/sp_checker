@@ -23,10 +23,10 @@ router.get("/tools/viewDiffCompare", function(req,res,next){
 
 router.post("/tools/diffCompare", function (req, res, next) {
     var referenceResult, compareResult;
-    superSoap.request(req.body.referenceWsdlUrl, req.body.soapData, null,
+    superSoap.request(req.body.referenceWsdlUrl, req.body.referenceSoapData, null,
         function (data) {
             referenceResult = data || "";
-            superSoap.request(req.body.compareWsdlUrl, req.body.soapData, null,
+            superSoap.request(req.body.compareWsdlUrl, req.body.compareSoapData, null,
                 function (data) {
                     compareResult = data || "";
                     var compare = new Compare();
@@ -34,7 +34,7 @@ router.post("/tools/diffCompare", function (req, res, next) {
                         res.end("ERROR");
                     }else{
                         compare.compareSuperProxy(referenceResult, compareResult, function(report){
-                            res.end(report);
+                            res.end(JSON.stringify(report, null ,2));
                         });
                     }
                 });

@@ -40,30 +40,6 @@
             </services>
             <!--==========================================================================-->
             <services>
-                <serviceCode>AUTO_NCIIC_MULTIPLE_3</serviceCode>
-                <serviceData>
-                    <key>ID_number</key>
-                    <stringValue>430726198902090059</stringValue>
-                </serviceData>
-                <serviceData>
-                    <key>Name</key>
-                    <stringValue>马瑜</stringValue>
-                </serviceData>
-            </services>
-            <!--==========================================================================-->
-            <!-- <services>
-                <serviceCode>AUTO_WECASH_4</serviceCode>
-                <serviceData>
-                    <key>Mobil</key>
-                    <stringValue>15169789931</stringValue>
-                </serviceData>
-                <serviceData>
-                    <key>Email</key>
-                    <stringValue>1597259783@qq.com</stringValue>
-                </serviceData>
-            </services> -->
-            <!--==========================================================================-->
-            <services>
                 <serviceCode>AUTO_ESHOP_5</serviceCode>
                 <serviceData>
                     <key>ContractNum</key>
@@ -277,7 +253,26 @@
                     <stringValue>0537</stringValue>
                 </serviceData>
             </services>
-
+            <!--==========================================================================-->
+            <services>
+                <serviceCode>AUTO_PINGAN_22</serviceCode>
+                <serviceData>
+                    <key>idNo</key>
+                    <stringValue>120103199008183511</stringValue>
+                </serviceData>
+                <serviceData>
+                    <key>name</key>
+                    <stringValue>衣测试</stringValue>
+                </serviceData>
+                <serviceData>
+                    <key>mobileNo</key>
+                    <stringValue>13820100550</stringValue>
+                </serviceData>
+                <serviceData>
+                    <key>cardNo</key>
+                    <stringValue>6222600210010114935</stringValue>
+                </serviceData>
+            </services>
         </v1:GetExternalServiceRequest>
     </soapenv:Body>
 </soapenv:Envelope>

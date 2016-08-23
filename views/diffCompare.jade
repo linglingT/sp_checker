@@ -1,0 +1,71 @@
+extends layout
+
+block links
+    link(href='../javascripts/code-prettify/prettify.css', rel='stylesheet')
+    link(href='../javascripts/code-prettify/skins/desert.css', rel='stylesheet')
+
+block scripts
+    script(src='../javascripts/code-prettify/prettify.js')
+    script(src='../javascripts/jquery.format.js')
+    script(src='../javascripts/diffCompare.js')
+
+block content
+    .row
+        .col-lg-6
+            .col-lg-12
+                .form-group
+                    label WSDL Options 1 (REFERENCE)
+                    select#referenceWsdlOption.form-control
+                        option -- Please select a option --
+                        optgroup(label="DEV")
+                            option http://localhost:8080/superproxy/endpoints/ExternalServicesWS.wsdl
+                        optgroup(label="UAT")
+                            option http://10.26.2.37:9909/superproxy/endpoints/ExternalServicesWS.wsdl
+                            option http://10.26.2.37:9910/superproxy/endpoints/ExternalServicesWS.wsdl
+                            option http://10.26.2.37:9911/superproxy/endpoints/ExternalServicesWS.wsdl
+                        optgroup(label="PRODUCTION")
+                            option http://10.26.2.38:9909/superproxy/endpoints/ExternalServicesWS.wsdl
+                            option http://10.26.2.39:9909/superproxy/endpoints/ExternalServicesWS.wsdl
+            // /.col-lg-12
+            .col-lg-12
+                .form-group
+                    label Request Data
+                    textarea#referenceSoapData.form-control(rows='3')
+                        | #{soapData}
+            // /.col-lg-12
+        // /.col-lg-6
+        .col-lg-6
+            .col-lg-12
+                .form-group
+                    label WSDL Options 2 (COMPARE)
+                    select#compareWsdlOption.form-control
+                        option -- Please select a option --
+                        optgroup(label="DEV")
+                            option http://localhost:8080/superproxy/endpoints/ExternalServicesWS.wsdl
+                        optgroup(label="UAT")
+                            option http://10.26.2.37:9909/superproxy/endpoints/ExternalServicesWS.wsdl
+                            option http://10.26.2.37:9910/superproxy/endpoints/ExternalServicesWS.wsdl
+                            option http://10.26.2.37:9911/superproxy/endpoints/ExternalServicesWS.wsdl
+                        optgroup(label="PRODUCTION")
+                            option http://10.26.2.38:9909/superproxy/endpoints/ExternalServicesWS.wsdl
+                            option http://10.26.2.39:9909/superproxy/endpoints/ExternalServicesWS.wsdl
+            // /.col-lg-12
+            .col-lg-12
+                .form-group
+                    label Request Data
+                    textarea#compareSoapData.form-control(rows='3')
+                        | #{soapData}
+            // /.col-lg-12
+        // /.col-lg-6
+
+
+        .col-lg-12
+            button#btnSubmit.btn.btn-default(type='button') Compare
+            button#btnReset.btn.btn-default(type='button') Reset
+        // /.col-lg-12
+
+        .col-lg-12
+            .form-group
+                label Result:
+                // ?prettify lang=html linenums=true?
+                pre#soapResp.prettyprint(style='height:400px;').
