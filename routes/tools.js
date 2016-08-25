@@ -7,8 +7,7 @@ var express = require('express'),
     fs = require("fs"),
     pathUtils = require("../utils/PathUtils"),
     request = require('request'),
-    Compare = require("../utils/compare")
-    ;
+    Compare = require("../utils/compare");
 
 
 

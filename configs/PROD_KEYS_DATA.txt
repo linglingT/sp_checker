@@ -286,6 +286,16 @@ a5_geo_longitude
 a5_geo_latitude
 a5_PC_Fingerprint_V2
 a5_distID_num_PC_FP_V2
+a5_distID_num_all_phone
+a5_distID_num_phone_num
+a5_distID_num_history_name
+a5_distID_num_history_phone
+a5_distID_num_history_del_adrs
+a5_distID_num_invoice_adrs
+a5_ratio_last_cur_ord
+a5_ratio_unit_price
+a5_UTM_group
+
 
 UNIONPAY
 a6_VERESULT
