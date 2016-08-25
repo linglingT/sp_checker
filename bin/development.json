@@ -1,0 +1,10 @@
+// forever/development.json
+{
+    // Comments are supported
+    "uid": "SuperProxyTools",
+    "append": true,
+    "watch": true,
+    "script": "www",
+    "sourceDir": "/opt/SuperProxyTool/sp_checker/bin",
+    "logFile":"/opt/SuperProxyTool/logs/sptools.log"
+}
