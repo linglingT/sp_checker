@@ -16,6 +16,7 @@
     "soap": "latest",
     "lodash": "latest",
     "xmldom": "latest",
-    "underscore": "latest"
+    "underscore": "latest",
+    "request": "latest"
   }
 }
