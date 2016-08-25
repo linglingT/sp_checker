@@ -25,6 +25,10 @@ CompareReport = function(){
         return compareReport;
     }
 
+    self.logUpException = function(errorMsg){
+        self.emit("logUpException",errorMsg);
+    }
+
     self.logUpCountOfServiceData = function(result, serviceCode, msg){
         self.emit("logUpCountOfServiceData",result, serviceCode, msg);
     }
@@ -38,8 +42,7 @@ CompareReport = function(){
     }
 
     self.on("logUpServiceCodeResult",function(result,serviceCode,msg){
-        if(!compareReport[serviceCode]){
-            compareReport[serviceCode] = {};
+        if(!compareReport[serviceCode].serviceCode){
             compareReport[serviceCode].serviceCode = {};
         }
 
@@ -48,7 +51,8 @@ CompareReport = function(){
     });
 
     self.on("logUpResultCodeResult",function(result,serviceCode, msg){
-        if(!compareReport[serviceCode].resultCode){
+        if(!compareReport[serviceCode]){
+            compareReport[serviceCode] = {};
             compareReport[serviceCode].resultCode = {};
         }
         compareReport[serviceCode].resultCode.result= result;
@@ -72,15 +76,21 @@ CompareReport = function(){
     });
 
     self.on("logUpServiceDataDifference",function(serviceCode,refServiceDataItem,comServiceDataItem,msg){
-        compareReport[serviceCode].serviceData.difference = [];
-        compareReport[serviceCode].serviceData.difference.push({"reference":JSON.stringify(refServiceDataItem), "compare":JSON.stringify(comServiceDataItem),"msg":msg});
+        if(!compareReport[serviceCode].serviceData.field.difference){
+            compareReport[serviceCode].serviceData.field.difference = [];
+        }
+        compareReport[serviceCode].serviceData.field.difference.push({"reference":JSON.stringify(refServiceDataItem), "compare":JSON.stringify(comServiceDataItem),"msg":msg});
     });
 
-}
+    self.on("logUpException",function(errorMsg){
+        compareReport.errorMsg = errorMsg
+    });
+
+};
 Compare = function(){
     var self = this,
         domParser = new DOMParser(),
-        prepareCompareResultCode,
+        prepareCompareServiceCode,
         prepareCompareServiceDatum,
         log, loopEnd, reportHook;
 
@@ -114,16 +124,27 @@ Compare = function(){
 
             compareService = compareServicesList.item(idx);
 
-            self.emit("compareServiceCode",referenceService,compareService,prepareCompareResultCode);
+            //self.emit("compareServiceCode",referenceService,compareService,prepareCompareResultCode);
+
+            self.emit("compareResultCode",referenceService,compareService,prepareCompareServiceCode);
+
         });
     });
 
     self.on("compareServiceCode",function(referenceService, compareService, next){
         var refServiceCode, comServiceCode, result;
-        refServiceCode = referenceService.getElementsByTagName("serviceCode").item(0).hasChildNodes() ?
-            referenceService.getElementsByTagName("serviceCode").item(0).childNodes.item(0).nodeValue : "Empty" ;
-        comServiceCode =compareService.getElementsByTagName("serviceCode").item(0).hasChildNodes() ?
-            compareService.getElementsByTagName("serviceCode").item(0).childNodes.item(0).nodeValue : "Empty";
+        try {
+            refServiceCode = referenceService.getElementsByTagName("serviceCode").item(0).hasChildNodes() ?
+                referenceService.getElementsByTagName("serviceCode").item(0).childNodes.item(0).nodeValue : "Empty";
+            comServiceCode = compareService.getElementsByTagName("serviceCode").item(0).hasChildNodes() ?
+                compareService.getElementsByTagName("serviceCode").item(0).childNodes.item(0).nodeValue : "Empty";
+        } catch (e) {
+            log.logUpException("compareServiceCode Exception")
+            if(reportHook){
+                reportHook(log.getReport());
+            }
+            return;
+        }
 
         result = refServiceCode === comServiceCode;
 
@@ -134,16 +155,28 @@ Compare = function(){
         }else {
             log.logUpServiceCodeResult(result,refServiceCode,"Different: Reference Service Code :" + refServiceCode
                 +" Compare Service Code :" + comServiceCode);
+            if(reportHook){
+                reportHook(log.getReport());
+            }
+            return ;
         }
     });
 
     self.on("compareResultCode",function(referenceService, compareService, next){
         var refServiceCode, refResultCode, comResultCode, result;
 
-        refServiceCode = referenceService.getElementsByTagName("serviceCode").item(0).childNodes.item(0).nodeValue;
+        try {
+            refServiceCode = referenceService.getElementsByTagName("serviceCode").item(0).childNodes.item(0).nodeValue;
 
-        refResultCode = referenceService.getElementsByTagName("resultCode").item(0).childNodes.item(0).nodeValue;
-        comResultCode = compareService.getElementsByTagName("resultCode").item(0).childNodes.item(0).nodeValue;
+            refResultCode = referenceService.getElementsByTagName("resultCode").item(0).childNodes.item(0).nodeValue;
+            comResultCode = compareService.getElementsByTagName("resultCode").item(0).childNodes.item(0).nodeValue;
+        } catch (e) {
+            log.logUpException("compareResultCode Exception")
+            if(reportHook){
+                reportHook(log.getReport());
+            }
+            return ;
+        }
 
         result = refResultCode === comResultCode;
 
@@ -160,10 +193,18 @@ Compare = function(){
     self.on("compareServiceDatum", function(referenceService, compareService,next){
         var refServiceCode, refServiceDataNodeArr, comServiceDataNodeArr, serviceDataCompareReslt, refServiceData, comServiceData, fieldName, fieldType;
 
-        refServiceCode = referenceService.getElementsByTagName("serviceCode").item(0).childNodes.item(0).nodeValue;
+        try {
+            refServiceCode = referenceService.getElementsByTagName("serviceCode").item(0).childNodes.item(0).nodeValue;
 
-        refServiceDataNodeArr = referenceService.getElementsByTagName("serviceData");
-        comServiceDataNodeArr = compareService.getElementsByTagName("serviceData");
+            refServiceDataNodeArr = referenceService.getElementsByTagName("serviceData");
+            comServiceDataNodeArr = compareService.getElementsByTagName("serviceData");
+        } catch (e) {
+            log.logUpException("compareServiceDatum Exception")
+            if(reportHook){
+                reportHook(log.getReport());
+            }
+            return;
+        }
 
         // COUNT CHECK
         serviceDataCompareReslt = refServiceDataNodeArr.length === comServiceDataNodeArr.length;
@@ -179,22 +220,22 @@ Compare = function(){
 
         _.each(refServiceDataNodeArr,function(serviceDataNode){
             fieldName = serviceDataNode.childNodes.item(0).childNodes.item(0).nodeValue;
-            fieldType = serviceDataNode.childNodes.item(1).nodeName;
+            fieldType = null == serviceDataNode.childNodes.item(1) ? "" : serviceDataNode.childNodes.item(1).nodeName;
             refServiceData.push({"fieldName":fieldName,"fieldType":fieldType});
         });
 
         _.each(comServiceDataNodeArr,function(serviceDataNode){
             fieldName = serviceDataNode.childNodes.item(0).childNodes.item(0).nodeValue;
-            fieldType = serviceDataNode.childNodes.item(1).nodeName;
+            fieldType = null == serviceDataNode.childNodes.item(1) ? "" : serviceDataNode.childNodes.item(1).nodeName;
             comServiceData.push({"fieldName":fieldName,"fieldType":fieldType});
         });
 
+        console.log("Reference Service Data: " + JSON.stringify(refServiceData))
+        console.log("Compare Service Data: " + JSON.stringify(comServiceData))
         if(_.isEqual(refServiceData,comServiceData)){
             //log up all of the key and value of service data is same
             //console.log("same")
             log.logUpAllOfFieldMatched(refServiceCode);
-            console.log("Reference Service Data: " + JSON.stringify(refServiceData))
-            console.log("Compare Service Data: " + JSON.stringify(comServiceData))
         }else{
             // iterator
             _.each(refServiceData, function(refServiceDataItem){
@@ -219,8 +260,10 @@ Compare = function(){
                     // log up com service data item was missing.
                     log.logUpServiceDataDifference(refServiceCode, refServiceDataItem, comServiceDataItem, "Field Extra");
                 }
-
             });
+            if(log.getReport()[refServiceCode].serviceData.field && !log.getReport()[refServiceCode].serviceData.field.difference){
+                log.logUpAllOfFieldMatched(refServiceCode);
+            }
 
         }
 
@@ -229,8 +272,8 @@ Compare = function(){
         }
     });
 
-    prepareCompareResultCode = function(referenceService,compareService){
-        self.emit("compareResultCode",referenceService,compareService,prepareCompareServiceDatum);
+    prepareCompareServiceCode = function(referenceService,compareService){
+        self.emit("compareServiceCode",referenceService,compareService,prepareCompareServiceDatum);
     };
 
     prepareCompareServiceDatum = function(referenceService,compareService){
