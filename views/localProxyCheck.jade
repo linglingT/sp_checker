@@ -1,0 +1,37 @@
+extends layout
+
+block links
+    link(href='../javascripts/code-prettify/prettify.css', rel='stylesheet')
+    link(href='../javascripts/code-prettify/skins/desert.css', rel='stylesheet')
+
+block scripts
+    //script(src='../javascripts/code-prettify/run_prettify.js')
+    script(src='../javascripts/code-prettify/prettify.js')
+    script(src='../javascripts/jquery.format.js')
+    script(src='../javascripts/localProxyCheck.js')
+
+block content
+    .row
+        .col-lg-12
+            .form-group
+                label Local Proxy:
+                select#localOption.form-control
+                    option -- Please select a option --
+                    each val, index in localProxyList
+                        option(value=val)= index
+        // /.col-lg-12
+
+        .col-lg-12
+            button#btnSubmit.btn.btn-default(type='button') POST
+        // /.col-lg-12
+
+        .col-lg-12
+            .form-group
+                label ResponseCode:
+                #ResponseCode
+                label Result:
+                // ?prettify lang=html linenums=true?
+                pre#checkResult(style='height:400px;').
+
+        // /.col-lg-12
+

@@ -2,9 +2,11 @@ var express = require('express'),
     router = express.Router(),
     SuperSoap = require("../utils/soap/super-soap"),
     superSoap = new SuperSoap(),
+    localProxyData="",
     path = require('path'),
     fs = require("fs"),
-    pathUtils = require("../utils/PathUtils")
+    pathUtils = require("../utils/PathUtils"),
+    request = require('request');
     Compare = require("../utils/compare")
     ;
 
@@ -96,6 +98,29 @@ router.post("/tools/missingCheck", function(req, res, next){
 
 });
 
+router.get("/tools/localProxyCheck", function(req,res,next){
+    var _configPath = pathUtils.getConfigsPath();
+    var _path = path.join(_configPath,"localProxyList");
+    localProxyData = fs.readFileSync(_path, "utf8");
+    res.render('localProxyCheck',  { title: 'local Proxy Check', localProxyList: JSON.parse(localProxyData)});
+});
+
+router.post("/tools/localProxyCheckResult", function(req,res,next){
+    //var data = JSON.parse(localProxyData);
+   var checkUrl = req.body.checkUrl;
+    //console.log(checkUrl);
+    var result;
+    request(checkUrl, function (error, response, body) {
+        if (!error){
+            //console.log(body);
+            result = {"code" : response.statusCode.toString(), "result" : body}
+        } else {
+            result = {"code" : "500", "result" : ""}
+        }
+        res.send(JSON.stringify(result));
+    });
+
+});
 
 
 module.exports = router;
