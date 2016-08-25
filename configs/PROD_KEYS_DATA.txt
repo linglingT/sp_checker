@@ -698,6 +698,7 @@ a18_query_string
 a18_first_visit
 a18_referer
 a18_Device_type
+a18_GPS_module
 
 a19_DOMAIN_1
 a19_DOMAIN_2
