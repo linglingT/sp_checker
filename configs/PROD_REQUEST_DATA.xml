@@ -239,22 +239,6 @@
             </services>
             <!--==========================================================================-->
             <services>
-                <serviceCode>AUTO_OFFICE_PHONE_CHECK_23</serviceCode>
-                <serviceData>
-                    <key>Employer_name</key>
-                    <stringValue>曲阜市鑫华矿山配件有限公司</stringValue>
-                </serviceData>
-                <serviceData>
-                    <key>Employer_phone</key>
-                    <stringValue>3190458</stringValue>
-                </serviceData>
-                <serviceData>
-                    <key>Employer_phone_ac</key>
-                    <stringValue>0537</stringValue>
-                </serviceData>
-            </services>
-            <!--==========================================================================-->
-            <services>
                 <serviceCode>AUTO_PINGAN_22</serviceCode>
                 <serviceData>
                     <key>idNo</key>
@@ -273,6 +257,108 @@
                     <stringValue>6222600210010114935</stringValue>
                 </serviceData>
             </services>
+            <!--==========================================================================-->
+            <services>
+                <serviceCode>AUTO_OFFICE_PHONE_CHECK_23</serviceCode>
+                <serviceData>
+                    <key>Employer_name</key>
+                    <stringValue>曲阜市鑫华矿山配件有限公司</stringValue>
+                </serviceData>
+                <serviceData>
+                    <key>Employer_phone</key>
+                    <stringValue>3190458</stringValue>
+                </serviceData>
+                <serviceData>
+                    <key>Employer_phone_ac</key>
+                    <stringValue>0537</stringValue>
+                </serviceData>
+            </services>
+            <!--==========================================================================-->
+            <services>
+                <serviceCode>AUTO_GEO_ACTIVE_INFO_27</serviceCode>
+                <!--1 or more repetitions:-->
+                <serviceData>
+                    <key>NAME</key>
+                    <!--Optional:-->
+                    <stringValue>任彦达</stringValue>
+                </serviceData>
+                <serviceData>
+                    <key>ID</key>
+                    <!--Optional:-->
+                    <stringValue>412702198905080072</stringValue>
+                </serviceData>
+                <serviceData>
+                    <key>MOBILE</key>
+                    <!--Optional:-->
+                    <stringValue>13302175570</stringValue>
+                </serviceData>
+            </services>
+            <!--==========================================================================-->
+            <services>
+                <serviceCode>AUTO_GEO_CONSUMPTION_30</serviceCode>
+                <!--1 or more repetitions:-->
+                <serviceData>
+                    <key>NAME</key>
+                    <!--Optional:-->
+                    <stringValue>任彦达</stringValue>
+                </serviceData>
+                <serviceData>
+                    <key>ID</key>
+                    <!--Optional:-->
+                    <stringValue>412702198905080072</stringValue>
+                </serviceData>
+                <serviceData>
+                    <key>MOBILE</key>
+                    <!--Optional:-->
+                    <stringValue>13302175570</stringValue>
+                </serviceData>
+                <serviceData>
+                    <key>CONTACT_NUMBER</key>
+                    <!--Optional:-->
+                    <stringValue>13131698689</stringValue>
+                </serviceData>
+            </services>
+            <!--==========================================================================-->
+            <services>
+                <serviceCode>AUTO_GEO_CONTACT_31</serviceCode>
+                <!--1 or more repetitions:-->
+                <serviceData>
+                    <key>NAME</key>
+                    <!--Optional:-->
+                    <stringValue>任彦达</stringValue>
+                </serviceData>
+                <serviceData>
+                    <key>ID</key>
+                    <!--Optional:-->
+                    <stringValue>412702198905080072</stringValue>
+                </serviceData>
+                <serviceData>
+                    <key>MOBILE</key>
+                    <!--Optional:-->
+                    <stringValue>13302175570</stringValue>
+                </serviceData>
+            </services>
+            <!--==========================================================================-->
+            <services>
+                <serviceCode>AUTO_GEO_DOWNTIME_32</serviceCode>
+                <!--1 or more repetitions:-->
+                <serviceData>
+                    <key>NAME</key>
+                    <!--Optional:-->
+                    <stringValue>任彦达</stringValue>
+                </serviceData>
+                <serviceData>
+                    <key>ID</key>
+                    <!--Optional:-->
+                    <stringValue>412702198905080072</stringValue>
+                </serviceData>
+                <serviceData>
+                    <key>MOBILE</key>
+                    <!--Optional:-->
+                    <stringValue>13302175570</stringValue>
+                </serviceData>
+            </services>
+
         </v1:GetExternalServiceRequest>
     </soapenv:Body>
 </soapenv:Envelope>
