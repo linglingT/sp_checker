@@ -1,0 +1,21 @@
+{
+    "UPA":"http://localproxy.homecredit.cn/UnionPayAdvisor/UnionPayAdvisor/service/dataGet?bankAccountNumber=6222020200096275025",
+    "QuickDB":"http://localproxy.homecredit.cn/quickDB/quickDB/service/dataGet?contractNumber=3611588380001",
+    "unionPay":"http://localproxy.homecredit.cn/unionpay/unionpay/service/dataGet?cardNum=6236682920002514204&name=%E5%AE%8B%E9%BE%99%E9%BE%99",
+    "qqFarm":"http://10.26.2.70:8085/QQFarm/qqFarm?wsdl",
+    "bfd":"http://10.26.2.38:9980/bfdproxy/services/bfdWebService?wsdl",
+    "ebu":"http://localproxy.homecredit.cn/EBU/EBU/service/dataGet?ident=360302198711300022&mobile=15876559947&bankAccountNumber=6228480058527861772&name=%E5%8F%B6%E4%B8%BD%E5%A9%B7",
+    "fraudMetrix":"http://localproxy.homecredit.cn/fraudmetrix/fraudmetrix/service/blacklist?idNumber=48392029190002034031&name=%E5%BC%A0%E4%B8%89&mobile=18392049382&email=example@qq.com&cardNumber=6220039483930293830",
+    "leadsTech":"http://localproxy.homecredit.cn/hccleads/hccleads/techService/dataGet?contractNumber=3654044772001",
+    "leadsBehavior":"http://localproxy.homecredit.cn/hccleads/hccleads/behaviorService/dataGet?contractNumber=3654044772001",
+    "pingan":"http://localproxy.homecredit.cn/pingan/pingan/service/dataGet",
+    "intellicredit":"http://localproxy.homecredit.cn/IntelliCredit/IntelliCredit/service/dataGet",
+    "UMS":"http://localproxy.homecredit.cn/UMSProxy/UMSProxy/service/dataGet?idNumber=0000000000300900&name=%E5%A7%93%E5%90%8D&mobile=15222571285&cardNum=62220203000000000000",
+    "penyuanMobilePhone":"http://localproxy.homecredit.cn/PengyuanMobilePhone/PengyuanMobilePhone/service/dataGet?mobilePhoneNumber=13012345678&name=%E6%B5%8B%E8%AF%95&idNumber=120222123456789012",
+    "bseven":"http://localproxy.homecredit.cn/BeeSeven/BeeSeven/service/dataGet?mobile=15337370011",
+    "suanhua":"http://localproxy.homecredit.cn/Suanhua/Suanhua/service/dataGet?mobileNum=13820452762",
+    "baiduPhone":"http://localproxy.homecredit.cn/Baidu/Baidu/service/dataGet?phoneNumber=18920020202",
+    "pengyuanstudentScore":"http://localproxy.homecredit.cn/StudentScorePY/StudentScorePY/service/dataGet",
+    "fraudMetrixFP":"http://localproxy.homecredit.cn/FraudMetrix_fp/FraudMetrix_fp/service/getFingerPrint?token_id=1234567",
+    "officePhoneAuto":"http://localproxy.homecredit.cn/OfficePhoneCheckPY/OfficePhoneCheckPY/service/dataGet?corp=%E6%9B%B2%E9%98%9C%E5%B8%82%E9%91%AB%E5%8D%8E%E7%9F%BF%E5%B1%B1%E9%85%8D%E4%BB%B6%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8&tel=3190458"
+}

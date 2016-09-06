@@ -99,7 +99,7 @@ router.post("/tools/missingCheck", function(req, res, next){
 
 router.get("/tools/localProxyCheck", function(req,res,next){
     var _configPath = pathUtils.getConfigsPath();
-    var _path = path.join(_configPath,"localProxyList");
+    var _path = path.join(_configPath,"localProxyList.txt");
     localProxyData = fs.readFileSync(_path, "utf8");
     res.render('localProxyCheck',  { title: 'local Proxy Check', localProxyList: JSON.parse(localProxyData)});
 });
