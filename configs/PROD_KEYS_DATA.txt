@@ -788,6 +788,19 @@ a21_parentUuid
 a21_score
 a21_uuid
 
+#PINGAN
+a22_idNo
+a22_idType
+a22_name
+a22_seqNo
+a22_sourceId
+a22_rskScore
+a22_rskMark
+a22_dataStatus
+a22_dataBuildTime
+a22_erCode
+
+
 #OFFICE PHONE CHECK
 a23_CheckResult
 a23_NmdName
@@ -798,3 +811,21 @@ a23_CompanyPhone
 a23_CompanyAddressRegion
 a23_CompanyAddressNonRegion
 a23_SourceName
+
+#AUTO_GEO_ACTIVE_INFO_27
+a27_A3_RESULT_DATA
+a27_A3_ERROR_CODE
+a27_A4_RESULT_DATA
+a27_A4_ERROR_CODE
+
+#AUTO_GEO_CONSUMPTION_30
+a30_B1_RESULT_DATA
+a30_B1_ERROR_CODE
+
+#AUTO_GEO_CONTACT_31
+a31_B11_RESULT_DATA
+a31_B11_ERROR_CODE
+
+#AUTO_GEO_DOWNTIME_32
+a32_B13_RESULT_DATA
+a32_B13_ERROR_CODE
