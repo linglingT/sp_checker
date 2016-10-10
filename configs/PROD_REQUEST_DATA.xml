@@ -295,6 +295,58 @@
             </services>
             <!--==========================================================================-->
             <services>
+                <serviceCode>AUTO_BAIRONG_4ELEMENTS_28</serviceCode>
+                <!--1 or more repetitions:-->
+                <serviceData>
+                    <key>id</key>
+                    <!--Optional:-->
+                    <stringValue>533522198910271220</stringValue>
+                </serviceData>
+                <serviceData>
+                    <key>cell</key>
+                    <!--Optional:-->
+                    <stringValue>13149908876</stringValue>
+                </serviceData>
+                <serviceData>
+                    <key>bank_id</key>
+                    <!--Optional:-->
+                    <stringValue>6227007201710036740</stringValue>
+                </serviceData>
+                <serviceData>
+                    <key>name</key>
+                    <!--Optional:-->
+                    <stringValue>曹艳清</stringValue>
+                </serviceData>
+            </services>
+
+
+            <!--==========================================================================-->
+            <services>
+                <serviceCode>AUTO_BAIRONG_PAYCONSUMPTION_29</serviceCode>
+                <!--1 or more repetitions:-->
+                <serviceData>
+                    <key>id</key>
+                    <!--Optional:-->
+                    <stringValue>370102471212003</stringValue>
+                </serviceData>
+                <serviceData>
+                    <key>cell</key>
+                    <!--Optional:-->
+                    <stringValue>13400002049</stringValue>
+                </serviceData>
+                <serviceData>
+                    <key>bank_id</key>
+                    <!--Optional:-->
+                    <stringValue>6217000010010884107</stringValue>
+                </serviceData>
+                <serviceData>
+                    <key>name</key>
+                    <!--Optional:-->
+                    <stringValue>李圆梅</stringValue>
+                </serviceData>
+            </services>
+            <!--==========================================================================-->
+            <services>
                 <serviceCode>AUTO_GEO_CONSUMPTION_30</serviceCode>
                 <!--1 or more repetitions:-->
                 <serviceData>
