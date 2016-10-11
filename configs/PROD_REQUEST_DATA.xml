@@ -239,7 +239,23 @@
             </services>
             <!--==========================================================================-->
             <services>
-                <serviceCode>AUTO_PINGAN_22</serviceCode>
+                <serviceCode>AUTO_OFFICE_PHONE_CHECK_22</serviceCode>
+                <serviceData>
+                    <key>Employer_name</key>
+                    <stringValue>曲阜市鑫华矿山配件有限公司</stringValue>
+                </serviceData>
+                <serviceData>
+                    <key>Employer_phone</key>
+                    <stringValue>3190458</stringValue>
+                </serviceData>
+                <serviceData>
+                    <key>Employer_phone_ac</key>
+                    <stringValue>0537</stringValue>
+                </serviceData>
+            </services>
+            <!--==========================================================================-->
+            <services>
+                <serviceCode>AUTO_PINGAN_23</serviceCode>
                 <serviceData>
                     <key>idNo</key>
                     <stringValue>120103199008183511</stringValue>
@@ -255,22 +271,6 @@
                 <serviceData>
                     <key>cardNo</key>
                     <stringValue>6222600210010114935</stringValue>
-                </serviceData>
-            </services>
-            <!--==========================================================================-->
-            <services>
-                <serviceCode>AUTO_OFFICE_PHONE_CHECK_23</serviceCode>
-                <serviceData>
-                    <key>Employer_name</key>
-                    <stringValue>曲阜市鑫华矿山配件有限公司</stringValue>
-                </serviceData>
-                <serviceData>
-                    <key>Employer_phone</key>
-                    <stringValue>3190458</stringValue>
-                </serviceData>
-                <serviceData>
-                    <key>Employer_phone_ac</key>
-                    <stringValue>0537</stringValue>
                 </serviceData>
             </services>
             <!--==========================================================================-->
