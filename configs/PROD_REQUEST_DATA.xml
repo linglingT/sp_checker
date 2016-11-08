@@ -410,7 +410,22 @@
                     <stringValue>13302175570</stringValue>
                 </serviceData>
             </services>
-
+            <!--==========================================================================-->
+            <services>
+                <serviceCode>AUTO_GEO_TRANS_MOBILE_36</serviceCode>
+                <serviceData>
+                    <key>MOBILE</key>
+                    <stringValue>13821040825</stringValue>
+                </serviceData>
+            </services>
+            <!--==========================================================================-->
+            <services>
+                <serviceCode>AUTO_GEO_TRANS_UNICOM_37</serviceCode>
+                <serviceData>
+                    <key>MOBILE</key>
+                    <stringValue>18522036087</stringValue>
+                </serviceData>
+            </services>
         </v1:GetExternalServiceRequest>
     </soapenv:Body>
 </soapenv:Envelope>
