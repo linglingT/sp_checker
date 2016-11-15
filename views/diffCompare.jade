@@ -18,11 +18,19 @@ block content
                     select#referenceWsdlOption.form-control
                         option -- Please select a option --
                         //optgroup(label="DEV")
-                            option http://localhost:8080/superproxy/endpoints/ExternalServicesWS.wsdl
+                            option(value="http://localhost:8080/superproxy/endpoints/ExternalServicesWS.wsdl")
+                                | http://localhost:8080/superproxy/endpoints/ExternalServicesWS.wsdl
+                            option(value="http://localhost:8090/superproxy/endpoints/ExternalServicesWS.wsdl")
+                                | http://localhost:8090/superproxy/endpoints/ExternalServicesWS.wsdl
                         optgroup(label="UAT")
-                            option http://10.26.2.37:9909/superproxy/endpoints/ExternalServicesWS.wsdl
-                            option http://10.26.2.37:9910/superproxy/endpoints/ExternalServicesWS.wsdl
-                            option http://10.26.2.37:9911/superproxy/endpoints/ExternalServicesWS.wsdl
+                            option(value="http://10.26.2.37:9909/superproxy/endpoints/ExternalServicesWS.wsdl")
+                                | Superproxy A B TEST
+                            option(value="http://10.26.2.37:9910/superproxy/endpoints/ExternalServicesWS.wsdl")
+                                | Superproxy A
+                            option(value="http://10.26.2.37:9911/superproxy/endpoints/ExternalServicesWS.wsdl")
+                                | Superproxy 2
+                            option(value="http://10.26.2.37:9912/superproxy/endpoints/ExternalServicesWS.wsdl")
+                                | Superproxy B
                         optgroup(label="PRODUCTION")
                             option http://10.26.2.38:9909/superproxy/endpoints/ExternalServicesWS.wsdl
                             option http://10.26.2.39:9909/superproxy/endpoints/ExternalServicesWS.wsdl
@@ -42,10 +50,16 @@ block content
                         option -- Please select a option --
                         //optgroup(label="DEV")
                             option http://localhost:8080/superproxy/endpoints/ExternalServicesWS.wsdl
+                            option http://localhost:8090/superproxy/endpoints/ExternalServicesWS.wsdl
                         optgroup(label="UAT")
-                            option http://10.26.2.37:9909/superproxy/endpoints/ExternalServicesWS.wsdl
-                            option http://10.26.2.37:9910/superproxy/endpoints/ExternalServicesWS.wsdl
-                            option http://10.26.2.37:9911/superproxy/endpoints/ExternalServicesWS.wsdl
+                            option(value="http://10.26.2.37:9909/superproxy/endpoints/ExternalServicesWS.wsdl")
+                                | Superproxy A B TEST
+                            option(value="http://10.26.2.37:9910/superproxy/endpoints/ExternalServicesWS.wsdl")
+                                | Superproxy A
+                            option(value="http://10.26.2.37:9911/superproxy/endpoints/ExternalServicesWS.wsdl")
+                                | Superproxy 2
+                            option(value="http://10.26.2.37:9912/superproxy/endpoints/ExternalServicesWS.wsdl")
+                                | Superproxy B
                         optgroup(label="PRODUCTION")
                             option http://10.26.2.38:9909/superproxy/endpoints/ExternalServicesWS.wsdl
                             option http://10.26.2.39:9909/superproxy/endpoints/ExternalServicesWS.wsdl
