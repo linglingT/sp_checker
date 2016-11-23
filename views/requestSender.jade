@@ -16,9 +16,14 @@ block content
                 label WSDL Options
                 select#wsdlOption.form-control
                     optgroup(label="UAT")
-                        option http://10.26.2.37:9909/superproxy/endpoints/ExternalServicesWS.wsdl
-                        option http://10.26.2.37:9910/superproxy/endpoints/ExternalServicesWS.wsdl
-                        option http://10.26.2.37:9911/superproxy/endpoints/ExternalServicesWS.wsdl
+                        option(value="http://10.26.2.37:9909/superproxy/endpoints/ExternalServicesWS.wsdl")
+                            | Superproxy A B TEST (Superproxy 1.0 & Superproxy 2.0)
+                        option(value="http://10.26.2.37:9910/superproxy/endpoints/ExternalServicesWS.wsdl")
+                            | Superproxy A (Superproxy 1.0)
+                        option(value="http://10.26.2.37:9911/superproxy/endpoints/ExternalServicesWS.wsdl")
+                            | Superproxy 2 (Superproxy 1.0)
+                        option(value="http://10.26.2.37:9912/superproxy/endpoints/ExternalServicesWS.wsdl")
+                            | Superproxy B (Superproxy 2.0)
                     optgroup(label="PRODUCTION")
                         option http://10.26.2.38:9909/superproxy/endpoints/ExternalServicesWS.wsdl
                         option http://10.26.2.39:9909/superproxy/endpoints/ExternalServicesWS.wsdl
