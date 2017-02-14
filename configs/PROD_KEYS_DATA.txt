@@ -295,7 +295,18 @@ a5_distID_num_invoice_adrs
 a5_ratio_last_cur_ord
 a5_ratio_unit_price
 a5_UTM_group
-
+a5_customer_type
+a5_registration_dtime
+a5_flag_activity
+a5_fst_ord_price
+a5_fst_ord_status
+a5_fst_ord_pay_type
+a5_last_ord_status
+a5_last_ord_pay_type
+a5_history_delivery_email
+a5_num_ord_by_status
+a5_sum_price_by_status
+a5_occupation_position
 
 UNIONPAY
 a6_VERESULT
