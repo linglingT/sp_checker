@@ -191,7 +191,7 @@ Compare = function(){
     });
 
     self.on("compareServiceDatum", function(referenceService, compareService,next){
-        var refServiceCode, refServiceDataNodeArr, comServiceDataNodeArr, serviceDataCompareReslt, refServiceData, comServiceData, fieldName, fieldType;
+        var refServiceCode, refServiceDataNodeArr, comServiceDataNodeArr, serviceDataCompareReslt, refServiceData, comServiceData, fieldName, fieldType, fieldValue;
 
         try {
             refServiceCode = referenceService.getElementsByTagName("serviceCode").item(0).childNodes.item(0).nodeValue;
@@ -221,13 +221,15 @@ Compare = function(){
         _.each(refServiceDataNodeArr,function(serviceDataNode){
             fieldName = serviceDataNode.childNodes.item(0).childNodes.item(0).nodeValue;
             fieldType = null == serviceDataNode.childNodes.item(1) ? "" : serviceDataNode.childNodes.item(1).nodeName;
-            refServiceData.push({"fieldName":fieldName,"fieldType":fieldType});
+            fieldValue = null == serviceDataNode.childNodes.item(1) ? "" : serviceDataNode.childNodes.item(1).nodeValue;
+            refServiceData.push({"fieldName":fieldName,"fieldType":fieldType,"fieldValue":fieldValue});
         });
 
         _.each(comServiceDataNodeArr,function(serviceDataNode){
             fieldName = serviceDataNode.childNodes.item(0).childNodes.item(0).nodeValue;
             fieldType = null == serviceDataNode.childNodes.item(1) ? "" : serviceDataNode.childNodes.item(1).nodeName;
-            comServiceData.push({"fieldName":fieldName,"fieldType":fieldType});
+            fieldValue = null == serviceDataNode.childNodes.item(1) ? "" : serviceDataNode.childNodes.item(1).nodeValue;
+            comServiceData.push({"fieldName":fieldName,"fieldType":fieldType,"fieldValue":fieldValue});
         });
 
         console.log("Reference Service Data: " + JSON.stringify(refServiceData))
@@ -248,6 +250,13 @@ Compare = function(){
                     if(!_.isEqual(refServiceDataItem.fieldType,comServiceDataItem.fieldType)){
                         // log up field type is different
                         log.logUpServiceDataDifference(refServiceCode,refServiceDataItem,comServiceDataItem,"Field Type Difference")
+                    }else{
+                        // matched do nothing
+                    }
+                    //compare field value
+                    if(!_.isEqual(refServiceDataItem.fieldValue,comServiceDataItem.fieldValue)){
+                        // log up field type is different
+                        log.logUpServiceDataDifference(refServiceCode,refServiceDataItem,comServiceDataItem,"Field Value Difference")
                     }else{
                         // matched do nothing
                     }
